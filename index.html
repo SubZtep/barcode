@@ -1,26 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="star.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>barcode</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script>
-      const app = document.getElementById("app")
-
-      if (!("BarcodeDetector" in window)) {
-        app.innerHTML =
-          "<p>Barcode Detector is not supported by this browser.</p>"
-      } else {
-        app.innerHTML = "<p>Barcode Detector supported!</p>"
-
-        app.innerHTML += "<ul>"
-        BarcodeDetector.getSupportedFormats().then((supportedFormats) => {
-          supportedFormats.forEach(
-            (format) => (app.innerHTML += `<li>${format}</li>`)
-          )
-        })
-        app.innerHTML += "</ul>"
-      }
-    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>
