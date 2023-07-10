@@ -14,7 +14,17 @@ function Make() {
   return (
     <div>
       <h1>Make</h1>
-      <img ref={barcode} class={css`width: 100%;`} />
+      <img
+        ref={barcode}
+        class={css`
+          width: 100%;
+        `}
+      />
+      <p>
+        <a href="https://lindell.me/JsBarcode/generator/" rel="noopener noreferrer" class={css`color: var(--color);`}>
+          Go to the Barcode generator example webapp &gt;
+        </a>
+      </p>
     </div>
   )
 }

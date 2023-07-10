@@ -12,6 +12,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --color: cyan;
 }
 
 a {
@@ -25,11 +27,15 @@ a:hover {
 
 body {
   margin: 0;
+  font-size: 1rem;
+}
+
+body, html, #root {
+  width: 100%;
+  height: 100%;
 }
 
 #root {
-  width: 100vw;
-  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr auto;
@@ -39,6 +45,7 @@ body {
 #root > *:first-child {
   grid-column: span 2;
   padding: 1rem;
+  overflow: auto;
 }
 
 #root > button {
@@ -54,6 +61,7 @@ textarea {
 }
 
 button {
+  color: #eee;
   padding: 0.5rem;
   border-radius: 4px;
   border-width: 1px;
@@ -70,6 +78,7 @@ button:enabled:active:hover div {
 }
 
 h1 {
+  color: var(--color);
   font-size: 3.2em;
   line-height: 1.1;
 }

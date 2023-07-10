@@ -8,7 +8,8 @@ const active = css`
   div {
     scale: 1.4;
     translate: 0 -2px;
-    color: limegreen;
+    color: var(--color);
+    font-weight: bold;
   }
 `
 
@@ -23,7 +24,11 @@ function App() {
       <button classList={{ [active]: view() === "Make" }} onClick={() => setView("Make")} disabled={view() === "Make"}>
         <div>Make</div>
       </button>
-      <button classList={{ [active]: view() === "Scan" }} onClick={() => setView("Scan")} disabled={view() === "Scan"}>
+      <button
+        classList={{ [active]: view() === "Scan" }}
+        onClick={() => setView("Scan")}
+        disabled={view() === "Scan" || !("BarcodeDetector" in window)}
+      >
         <div>Scan</div>
       </button>
     </>
