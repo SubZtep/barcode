@@ -21,7 +21,14 @@ function Make() {
         `}
       />
       <p>
-        <a href="https://lindell.me/JsBarcode/generator/" rel="noopener noreferrer" class={css`color: var(--color);`}>
+        <a
+          href="https://lindell.me/JsBarcode/generator/"
+          rel="noopener noreferrer"
+          target="_blank"
+          class={css`
+            color: var(--color);
+          `}
+        >
           Go to the Barcode generator example webapp &gt;
         </a>
       </p>

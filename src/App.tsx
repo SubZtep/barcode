@@ -6,10 +6,10 @@ import Scan from "./views/Scan"
 
 const active = css`
   div {
-    scale: 1.4;
     translate: 0 -2px;
     color: var(--color);
     font-weight: bold;
+    transform: scale(1.4);
   }
 `
 
