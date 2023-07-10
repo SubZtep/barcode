@@ -27,7 +27,7 @@ function App() {
       <button
         classList={{ [active]: view() === "Scan" }}
         onClick={() => setView("Scan")}
-        disabled={view() === "Scan" || !("BarcodeDetector" in window)}
+        // disabled={view() === "Scan" || !("BarcodeDetector" in window)}
       >
         <div>Scan</div>
       </button>
