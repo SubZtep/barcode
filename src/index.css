@@ -57,11 +57,12 @@ button {
   padding: 0.5rem;
   border-radius: 4px;
   border-width: 1px;
+  cursor: pointer;
   transition: background-color 80ms;
 }
 
-button:enabled {
-  cursor: pointer;
+button:disabled {
+  pointer-events: none;
 }
 
 button:enabled:active:hover div {
