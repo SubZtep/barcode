@@ -64,7 +64,7 @@ button:enabled {
   cursor: pointer;
 }
 
-button:active:hover div {
+button:enabled:active:hover div {
   translate: 0.5px 0.6px;
 }
 
