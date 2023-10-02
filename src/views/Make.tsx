@@ -12,12 +12,16 @@ function Make() {
   })
 
   return (
-    <div>
-      <h1>Make</h1>
+    <div
+      class={css`
+        text-align: center;
+      `}
+    >
       <img
         ref={barcode}
         class={css`
-          width: 100%;
+          width: 60%;
+          opacity: 0.8;
         `}
       />
       <p>
@@ -27,9 +31,13 @@ function Make() {
           target="_blank"
           class={css`
             color: var(--color);
+            font-size: 2rem;
+            padding: 1rem;
+            text-align: center;
+            display: block;
           `}
         >
-          Go to the Barcode generator example webapp &gt;
+          Click here to open the Barcode generator example webapp &gt;
         </a>
       </p>
     </div>
