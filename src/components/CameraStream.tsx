@@ -8,7 +8,7 @@ const CameraStream: ParentComponent<{
 }> = props => {
   let video: HTMLVideoElement | undefined
   let mediaStream: MediaStream | null = null
-  let barcodeDetector: any = null
+  let barcodeDetector: Record<any, any>
   let interval: number
   const [result, setResult] = createSignal("Hello")
 
@@ -20,10 +20,12 @@ const CameraStream: ParentComponent<{
   onMount(() => {
     video!.addEventListener("loadedmetadata", videoLoaded)
 
-    // @ts-ignore
-    const barcodeDetector = new BarcodeDetector({
-      formats: ["code_39", "code_128", "codabar", "ean_13"],
-    });
+    if ("BarcodeDetector" in window) {
+      // @ts-ignore
+      barcodeDetector = new BarcodeDetector({
+        formats: ["code_39", "code_128", "codabar", "ean_13", "qr_code"],
+      });
+    }
   })
 
   onCleanup(() => {
@@ -41,7 +43,7 @@ const CameraStream: ParentComponent<{
       props.onStart?.(video!)
 
       interval = setInterval(async () => {
-        const barcodes = await barcodeDetector.detect(video);
+        const barcodes = await barcodeDetector?.detect(video);
         if (barcodes.length <= 0) return;
         setResult(barcodes.map(barcode => barcode.rawValue));
       }, 1000)
