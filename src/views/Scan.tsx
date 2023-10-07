@@ -1,5 +1,6 @@
 import { Show, createSignal, For, onMount } from "solid-js"
 import { css } from "@emotion/css"
+import CameraStream from "../components/CameraStream"
 
 function Scan() {
   const [formats, setFormats] = createSignal<string[]>([])
@@ -7,18 +8,6 @@ function Scan() {
   onMount(async () => {
     // @ts-ignore
     setFormats(await BarcodeDetector.getSupportedFormats())
-
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: {
-        facingMode: { ideal: "environment" },
-      },
-      audio: false,
-    })
-
-    const videoEl = document.querySelector("#stream") as HTMLVideoElement
-    videoEl.srcObject = stream
-
-    await videoEl.play()
   })
 
   return (
@@ -28,12 +17,15 @@ function Scan() {
       `}
     >
       <Show when={Array.isArray(formats())}>
-        <select>
-          <For each={formats()}>{format => <option>{format}</option>}</For>
-        </select>
+        <label class={css`display: block; margin: 1rem;`}>
+          Barcode format:&nbsp;
+          <select>
+            <For each={formats()}>{format => <option>{format}</option>}</For>
+          </select>
+        </label>
       </Show>
 
-      <video id="stream" style="width: 100vw; height: 100vh;" />
+      <CameraStream enabled={true} />
     </div>
   )
 }
