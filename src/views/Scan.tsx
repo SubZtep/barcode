@@ -18,7 +18,7 @@ function Scan() {
     >
       <Show when={Array.isArray(formats())}>
         <label class={css`display: block; margin: 1rem;`}>
-          Barcode format:&nbsp;
+          Barcode formats:&nbsp;
           <select>
             <For each={formats()}>{format => <option>{format}</option>}</For>
           </select>

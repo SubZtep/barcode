@@ -17,13 +17,15 @@ const CameraStream: ParentComponent<{
     // setState({ input: { width: video!.clientWidth, height: video!.clientHeight } })
   }
 
-  onMount(() => {
+  onMount(async () => {
     video!.addEventListener("loadedmetadata", videoLoaded)
 
     if ("BarcodeDetector" in window) {
       // @ts-ignore
       barcodeDetector = new BarcodeDetector({
-        formats: ["code_39", "code_128", "codabar", "ean_13", "qr_code"],
+        // @ts-ignore
+        // formats: ["code_39", "code_128", "codabar", "ean_13", "qr_code"],
+        formats: await BarcodeDetector.getSupportedFormats(),
       });
     }
   })
